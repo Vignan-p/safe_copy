@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #141414; /* Dark gray background */
+            color: #ffffff; /* White text color */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            background-color: black; /* Container background color */
+            padding: 100px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px white; /* White shadow effect */
+            color: white; /* Text color */
+            outline-color: white; /* Outline color */
+        }
+ 
+       
+        h1 {
+            font-size: 40px;
+            margin-top: 0;
+            color: #ff6600; /* Orange title color */
+        }
+        .pin-text {
+            font-size: 25px;
+            color: orangered; /* Red text color for PIN */
+            font-weight: bold; /* Make the PIN text bold for better visibility */
+        }
+        .pin-label {
+            color: white; /* Green color for "Your PIN:" */
+        }
+        .toggle-pin {
+            margin-top: 70px;
+        }
+     
+        /* CSS for the return link */
+       
+        #returnToPinPageLink .return-link {
+            text-decoration: underline; /* Remove underlines from links */
+            color:orangered; /* Single color for the link (blue) */
+            font-weight: bold; /* Bold text */
+            transition: color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+        }
+       
+        #returnToPinPageLink .return-link:hover {
+            color: #467db4; /* Text color on hover */
+            transform: scale(1.05); /* Slight scale-up effect on hover */
+        }
+
+        /* Lock image styles */
+        .lock-image {
+            width: 100px; /* Adjust the width as needed */
+            margin-top: 20px; /* Add some margin to separate it from the text */
+            animation: openLock 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; /* Updated animation */
+            border-radius: 100%;
+        }
+   
+       
+       
+    </style>
+</head>
+<body>
+    {% csrf_token %}
+       
+            <div class="container">
+                <h1>Profile Lock</h1>
+                <p><span class="pin-label">Your PIN:</span> <span class="pin-text">{{ value }}</span></p>
+                <br>
+                <p id="returnToPinPageLink" style="text-align: center; margin-top: 20px;">
+                    <a href="{% url 'profiles' %}" id="backButtonLink" class="return-link">Return to Profile Page</a>
+                </p>
+            </div>
+       
+         
+       
+</body>
+</html>
